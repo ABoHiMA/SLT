@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <title>SignUp</title>
+  <link rel="icon" type="image/png" href="{% static 'image/LG.png' %}">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("{% static 'image/SLTWP.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      max-height: 530px;
+      margin: 0 auto;
+      padding: 18px;
+      background-color: rgba(180, 180, 180, 0.25);
+      position: relative;
+      z-index: 1;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+  display: block;
+  margin: 0 auto;
+  width: 140px;
+  text-align: center;
+}
+
+    .title {
+      color: #ffffff;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      margin-bottom: 15px;
+    }
+
+    .form-field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-field input {
+      width: 100%;
+      height: 25px;
+      font-size: 12px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form-field input[type="submit"] {
+      background-color: #2980b9;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-field input[type="submit"]:hover {
+      background-color: #1c6fae;
+    }
+
+    .contact-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #305f7e;
+      text-decoration: none;
+    }
+    
+    body:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-image: url("{% static 'image/SLTWP.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: brightness(90%);
+    }
+  </style>
+</head>
+<body>
+  <a href="{% url 'Login' %}">
+    <img class="logo" src="{% static 'image/LG.png' %}" alt="Logo" />
+  </a>
+  <div class="container">
+    <h2 class="title">Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-field">
+        <label for="username">Username:</label>
+        {{ form.username }}
+      </div>
+      <div class="form-field">
+        <label for="first_name">First Name:</label>
+        {{ form.first_name }}
+      </div>
+      <div class="form-field">
+        <label for="last_name">Last Name:</label>
+        {{ form.last_name }}
+      </div>
+      <div class="form-field">
+        <label for="email">Email:</label>
+        {{ form.email }}
+      </div>
+      <div class="form-field">
+        <label for="password1">Password:</label>
+        {{ form.password1 }}
+      </div>
+      <div class="form-field">
+        <label for="password2">Confirm Password:</label>
+        {{ form.password2 }}
+      </div>
+      <div class="form-field">
+        <input type="submit" value="Sign Up">
+      </div>
+    </form>
+    <a class="contact-link" href="{% url 'Fdbk' %}">Contact Us</a>    
+    <footer style="text-align: center; margin-top: 20px;">
+      <p style="font-size: 12px;">Copyright By AEKh</p>
+    </footer>
+  </div>
+</body>
+</html>

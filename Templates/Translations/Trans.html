@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+{% load static %}  
+{% load crispy_forms_tags %}
+<head>
+  <title>Translation</title>
+  <link rel="icon" type="image/png" href="{% static 'image/LG.png' %}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 118px;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      font-family:'Comic Sans MS';
+        }
+
+    .input-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .input-field {
+      width: 318px;
+      height: 50px;
+      font-size: 24px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-right: 10px;
+    }
+
+    .translate-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      background-color: #2980b9;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .image-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .image-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      width: 150px;
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .letter {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .contact-link {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #e74c3c;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 599px;
+      right: 10px;
+    }
+
+    .lgout-link {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #95a5a6;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 599px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+      <form>
+        <div class="container">
+          <div class="header">
+            <a href="{% url 'trans' %}">
+              <img class="logo" src="{% static 'image/LGBK.png' %}" alt="Logo" />
+            </a>
+            <h1 class="title">Translate To Sign Language</h1>
+          </div>
+          <div class="input-container">
+            <input class="input-field" type="text" id="input-text" name="letters" maxlength="1" placeholder="Enter The Letter to Translate" />
+            <button class="translate-button" type="submit">Translate</button>
+          </div>
+          <footer style="text-align: center; margin-top: 20px;">
+            <p style="font-size: 12px;">Copyright By AEKh</p>
+          </footer>    
+          <div id="output-container" style="display: none;">
+            <h2>Translation:</h2>
+            <div id="translated-text"></div>
+          </div>
+          <h2>Image of Letter:</h2>
+          {% if images %}
+          <ul>
+            {% for image in images %}
+            <li>
+              <div class="image-list">
+                <img src="{{ image.image_file.url }}" alt="{{ image.letter }}">
+                <h1>:  {{ image.letter }}</h1>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>{{ request.GET.letters }}</p>
+          {% endif %}
+        </div>
+        <a class="contact-link" href="{% url 'Fdbk' %}">Contact Us</a>    
+        <a class="lgout-link" href="{% url 'Login' %}">Logout</a>    
+      </form> 
+    </body>    
+</html>

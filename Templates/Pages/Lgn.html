@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    {% load crispy_forms_tags %}
+<head>
+    <title>Welcome</title>
+    <link rel="icon" type="image/png" href="{% static 'image/LG.png' %}">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{% static 'image/SLTWP.png' %}");
+            background-size: cover;
+            background-position: center;
+            filter: brightness(90%);
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 96px;
+            height: 50px;
+            width: 100px;
+            border-radius: 25px;
+        }
+
+        .signin {
+            color: #fff;
+            text-align: center;
+            font-size: 32px;
+            line-height: 1.5;
+            margin-top: 70px;
+        }
+
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            max-width: 300px;
+            height: 445px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(180, 180, 180, 0.25);
+            border-radius: 30px;
+            padding: 20px;
+        }
+        
+        .input-field {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .login-button {
+            width: 100%;
+            max-width: 200px;
+            height: 40px;
+            margin-top: 9px;
+            border-radius: 25px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        .create-account {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    position: relative;
+}
+
+.create-account:hover {
+    color: #0056b3;
+}
+
+.create-account::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.create-account:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+        .contact-link {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    position: relative;
+}
+
+.contact-link:hover {
+    color: #000000;
+}
+
+.contact-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.contact-link:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-field input {
+            width: 100%;
+            height: 25px;
+            font-size: 12px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-field input[type="submit"] {
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-field input[type="submit"]:hover {
+            background-color: #1c6fae;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <div class="box">
+        <div class="logo">
+            <a href="{% url 'Login' %}" id="logo">
+                <img src="{% static 'image/LG.png' %}" width="100%">
+            </a>
+        </div>
+
+        <div class="signin">Sign in</div>
+
+        <br>
+        
+        <form action="{% url 'Login' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-field">
+                <label for="username">Username:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-field">
+                <label for="Password">Password:</label>
+                {{ form.password }}
+            </div>
+        
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <div class="create-account">
+            <a href="{% url 'CAcc' %}">Create Account</a>
+        </div>
+        
+        <div class="contact-link">
+            <a href="{% url 'Fdbk' %}">Contact Us</a>
+        </div>
+        <footer style="text-align: center; margin-top: 20px;">
+            <p style="font-size: 12px;">Copyright By AEKh</p>
+          </footer>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <title>SLT</title>
+  <link rel="icon" type="image/png" href="{% static 'image/LG.png' %}">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("{% static 'image/SLTWP.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(180, 180, 180, 0.25);
+      position: relative;
+      z-index: 1;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 36px;
+	  border-radius: 90px;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto;
+      width: 188px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    body:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-image: url("{% static 'image/SLTWP.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: brightness(90%);
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .image-container img {
+      margin: 0 1px;
+      width: 180px; 
+      height: auto; 
+	  border-radius: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .button-container a {
+      display: inline-block;
+      background-color: #3f29b9;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button-container a:hover {
+      background-color: #1c6fae;
+    }
+  </style>
+</head>
+<body>
+  <a href="{% url 'Login' %}">
+    <img class="logo" src="{% static 'image/LG.png' %}" alt="LG" />
+  </a>
+  <div class="container">
+    <h2 class="title">Thank You ..^-^..</h2>
+    <div class="image-container">
+      <img src="{% static 'image/T.png' %}" alt="T" />
+      <img src="{% static 'image/u.png' %}" alt="U" />
+    </div>
+    <div class="button-container">
+      <a href="{% url 'Login' %}">Home</a>
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+      <p style="font-size: 12px;">Copyright By AEKh</p>
+    </footer>
+  </div>
+</body>
+</html>
